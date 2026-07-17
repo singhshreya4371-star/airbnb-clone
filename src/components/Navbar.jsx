@@ -1,33 +1,26 @@
-// function Navbar(){
-//     return (
-//         <nav>
-//             <h2>Airbnb</h2>
+import { NavLink } from "react-router-dom";
+import "./Navbar.css";
 
-//             <ul>
-//                 <li>Homes</li>
-//                 <li>Experiences</li>
-//                 <li>Services</li>
-//             </ul>
-//             <button>Login</button>
-//         </nav>
-//     );
-// }
-
-// export default Navbar;
 function Navbar() {
   return (
     <nav className="navbar">
-      <h2 className="logo">Airbnb</h2>
+      <h2 className="logo">Airbnb Clone</h2>
 
       <ul className="nav-links">
-        <li>Home</li>
-        <li>Stays</li>
-        <li>Experiences</li>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/properties">Stays</NavLink></li>
+        <li><NavLink to="/about">Experiences</NavLink></li>
+        <li><NavLink to="/contact">Contact</NavLink></li>
+       <li>
+  <NavLink to="/favorites">❤️ Favorites</NavLink>
+</li>
       </ul>
 
-      <button className="profile-btn">
-        Profile
-      </button>
+      <div className="profile-btn">
+  <span>🌐</span>
+  <span>☰</span>
+  <span>👤</span>
+</div>
     </nav>
   );
 }

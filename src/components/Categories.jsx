@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { CategoryContext } from "../context/CategoryContext";
+
 function Categories() {
+  const { category, setCategory } = useContext(CategoryContext);
+
   const categories = [
     "🏖 Beach",
     "🏕 Camping",
@@ -7,13 +12,19 @@ function Categories() {
     "🌊 Lake",
     "🏔 Mountain",
     "🏙 City",
-    "🏝 Island"
+    "🏝 Island",
+    "🌲 Forest",
+    "🏰 Castle",
   ];
 
   return (
     <div className="categories">
       {categories.map((item) => (
-        <div className="category" key={item}>
+        <div
+          className={`category ${category === item ? "active" : ""}`}
+          key={item}
+          onClick={() => setCategory(item)}
+        >
           {item}
         </div>
       ))}

@@ -1,28 +1,66 @@
+import { useState, useContext } from "react";
+import { SearchContext } from "../context/SearchContext";
+
 function SearchBar() {
+  const { setSearch } = useContext(SearchContext);
+
+  const [where, setWhere] = useState("");
+  const [guests, setGuests] = useState("");
+  const [price, setPrice] = useState("");
+  const [sort, setSort] = useState("");
+
+  const handleSearch = () => {
+    setSearch({
+      where,
+      guests,
+      price,
+      sort,
+    });
+  };
+
   return (
-    <div className="search-container">
-      <div className="search-box">
+    <div className="search-bar">
 
-        <div className="search-item">
-          <h4>Where</h4>
-          <p>Anywhere</p>
-        </div>
+      <input
+        type="text"
+        placeholder="📍 Where"
+        value={where}
+        onChange={(e) => setWhere(e.target.value)}
+      />
 
-        <div className="search-item">
-          <h4>Check in</h4>
-          <p>Any week</p>
-        </div>
+      <input type="date" />
 
-        <div className="search-item">
-          <h4>Guests</h4>
-          <p>Add guests</p>
-        </div>
+      <input type="date" />
 
-        <button className="search-btn">
-          🔍
-        </button>
+      <input
+        type="number"
+        placeholder="👥 Guests"
+        value={guests}
+        onChange={(e) => setGuests(e.target.value)}
+      />
 
-      </div>
+      <select
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+      >
+        <option value="">💰 All Prices</option>
+        <option value="5000">Under ₹5,000</option>
+        <option value="7000">₹5,000 - ₹7,000</option>
+        <option value="8000">Above ₹7,000</option>
+      </select>
+
+      <select
+        value={sort}
+        onChange={(e) => setSort(e.target.value)}
+      >
+        <option value="">↕ Sort By</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="rating">Highest Rating</option>
+      </select>
+
+      <button onClick={handleSearch}>🔍 Search</button>
+
     </div>
   );
 }
