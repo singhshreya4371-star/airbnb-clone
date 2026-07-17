@@ -9,14 +9,18 @@ function SearchBar() {
   const [price, setPrice] = useState("");
   const [sort, setSort] = useState("");
 
-  const handleSearch = () => {
-    setSearch({
-      where,
-      guests,
-      price,
-      sort,
-    });
+const handleSearch = () => {
+  const data = {
+    where,
+    guests,
+    price,
+    sort,
   };
+
+  console.log("Sending:", data);
+
+  setSearch(data);
+};
 
   return (
     <div className="search-bar">
